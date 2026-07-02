@@ -26,13 +26,6 @@ function generateMission() {
         "Missão gerada! Veja o console (F12)";
 }
     
-const mission = {
-        acts: Number(acts),
-        threats: Number(threats),
-        successes: Number(successes),
-        failures: Number(failures)
-    };
-
     console.log("MISSÃO GERADA:");
     console.log(mission);
 
