@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>EXAA - Mission Editor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>EXAA - CENTRAL OPERACIONAL</h1>
+
+        <div class="panel">
+
+            <label>Atos</label>
+            
+            <div class="number-control">
+            
+                <button onclick="changeValue('acts', -1, 2, 5)">
+                    −
+                </button>
+            
+                <span id="acts">3</span>
+            
+                <button onclick="changeValue('acts', 1, 2, 5)">
+                    +
+                </button>
+            
+            </div>
+
+            <label>Ameaças</label>
+
+            <div class="number-control">
+            
+                <button onclick="changeValue('threats', -1, 2, 5)">
+                    −
+                </button>
+            
+                <span id="threats">2</span>
+            
+                <button onclick="changeValue('threats', 1, 2, 5)">
+                    +
+                </button>
+            
+            </div>
+
+            <label>Sucessos por Ato</label>
+
+            <div class="number-control">
+            
+                <button onclick="changeValue('successes', -1, 1, 10)">
+                    −
+                </button>
+            
+                <span id="successes">5</span>
+            
+                <button onclick="changeValue('successes', 1, 1, 10)">
+                    +
+                </button>
+            
+            </div>
+
+            <label>Falhas por Ato</label>
+
+            <div class="number-control">
+            
+                <button onclick="changeValue('failures', -1, 1, 10)">
+                    −
+                </button>
+            
+                <span id="failures">3</span>
+            
+                <button onclick="changeValue('failures', 1, 1, 10)">
+                    +
+                </button>
+            
+            </div>
+
+            <button onclick="generateMission()">
+                GERAR MISSÃO
+            </button>
+
+        </div>
+
+        <p id="output"></p>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
