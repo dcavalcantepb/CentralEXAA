@@ -20,40 +20,13 @@ function generateMission() {
     const mission = {
         title: "",
         briefing: "",
-
+        createdAt: new Date(),
         acts: []
     };
 
-    // Cria a quantidade de atos definida pelo usuário
+    // Cria os atos da missão
     for (let i = 1; i <= missionState.acts; i++) {
-
-        mission.acts.push({
-
-            id: i,
-
-            title: `Ato ${i}`,
-
-            description: "",
-
-            primaryObjective: "",
-
-            secondaryObjectives: [],
-
-            resolution: {
-                successThreshold: missionState.successes,
-                failureThreshold: missionState.failures
-            },
-
-            threats: [],
-
-            turningPoint: {
-                event: "",
-                onSuccess: "",
-                onFailure: ""
-            }
-
-        });
-
+        mission.acts.push(createAct(i));
     }
 
     console.clear();
@@ -62,6 +35,37 @@ function generateMission() {
 
     document.getElementById("output").innerText =
         "Missão estruturada! Veja o console (F12).";
+
+}
+
+function createAct(id) {
+
+    return {
+
+        id: id,
+
+        title: `Ato ${id}`,
+
+        description: "",
+
+        primaryObjective: "",
+
+        secondaryObjectives: [],
+
+        resolution: {
+            successThreshold: missionState.successes,
+            failureThreshold: missionState.failures
+        },
+
+        threats: [],
+
+        turningPoint: {
+            event: "",
+            onSuccess: "",
+            onFailure: ""
+        }
+
+    };
 
 }
 
