@@ -25,13 +25,6 @@ function generateMission() {
     document.getElementById("output").innerText =
         "Missão gerada! Veja o console (F12)";
 }
-    
-    console.log("MISSÃO GERADA:");
-    console.log(mission);
-
-    document.getElementById("output").innerText =
-        "Missão gerada! Veja o console (F12)";
-}
 
 function updateUI() {
     document.getElementById("acts").innerText = missionState.acts;
