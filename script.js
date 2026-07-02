@@ -32,3 +32,5 @@ function updateUI() {
     document.getElementById("successes").innerText = missionState.successes;
     document.getElementById("failures").innerText = missionState.failures;
 }
+
+updateUI();
