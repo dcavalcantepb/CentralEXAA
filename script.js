@@ -1,25 +1,30 @@
+const missionState = {
+    acts: 3,
+    threats: 2,
+    successes: 5,
+    failures: 3
+};
+
 function changeValue(id, change, min, max) {
 
-    const element = document.getElementById(id);
+    missionState[id] += change;
 
-    let value = Number(element.innerText);
+    if (missionState[id] < min) missionState[id] = min;
+    if (missionState[id] > max) missionState[id] = max;
 
-    value += change;
-
-    if (value < min) value = min;
-
-    if (value > max) value = max;
-
-    element.innerText = value;
-
+    updateUI();
 }
 
 function generateMission() {
 
-const acts = Number(document.getElementById("acts").innerText);
-const threats = Number(document.getElementById("threats").innerText);
-const successes = Number(document.getElementById("successes").innerText);
-const failures = Number(document.getElementById("failures").innerText);
+    const mission = structuredClone(missionState);
+
+    console.log("MISSÃO GERADA:");
+    console.log(mission);
+
+    document.getElementById("output").innerText =
+        "Missão gerada! Veja o console (F12)";
+}
     
 const mission = {
         acts: Number(acts),
@@ -33,4 +38,11 @@ const mission = {
 
     document.getElementById("output").innerText =
         "Missão gerada! Veja o console (F12)";
+}
+
+function updateUI() {
+    document.getElementById("acts").innerText = missionState.acts;
+    document.getElementById("threats").innerText = missionState.threats;
+    document.getElementById("successes").innerText = missionState.successes;
+    document.getElementById("failures").innerText = missionState.failures;
 }
