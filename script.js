@@ -13,59 +13,101 @@ function changeValue(id, change, min, max) {
     if (missionState[id] > max) missionState[id] = max;
 
     updateUI();
+
 }
 
 function generateMission() {
 
+    const missionType = getRandomMissionType();
+
     const mission = {
-        title: "",
-        briefing: "",
+
+        id: generateMissionId(),
+
+        type: missionType.name,
+
+        title: `Operação ${missionType.name}`,
+
+        briefing: missionType.description,
+
         createdAt: new Date(),
+
         acts: []
+
     };
 
-    // Cria os atos da missão
-    for (let i = 1; i <= missionState.acts; i++) {
-        mission.acts.push(createAct(i));
+    for (let i = 0; i < missionState.acts; i++) {
+
+        mission.acts.push(createAct(i, missionType));
+
     }
 
     console.clear();
-    console.log("MISSÃO GERADA:");
-    console.log(mission);
+
+    console.group(`MISSÃO #${mission.id}`);
+
+    console.dir(mission);
+
+    console.groupEnd();
 
     document.getElementById("output").innerText =
-        "Missão estruturada! Veja o console (F12).";
+        `Missão #${mission.id} recebida. Veja o console (F12).`;
 
 }
 
-function createAct(id) {
+function createAct(index, missionType) {
+
+    const template = missionType.acts[index];
 
     return {
 
-        id: id,
+        id: index + 1,
 
-        title: `Ato ${id}`,
+        title: template.title,
 
-        description: "",
+        description: template.description,
 
         primaryObjective: "",
 
         secondaryObjectives: [],
 
         resolution: {
+
             successThreshold: missionState.successes,
+
             failureThreshold: missionState.failures
+
         },
 
         threats: [],
 
         turningPoint: {
+
             event: "",
+
             onSuccess: "",
+
             onFailure: ""
+
         }
 
     };
+
+}
+
+function getRandomMissionType() {
+
+    const missionTypes = Object.values(missionDatabase);
+
+    const randomIndex = Math.floor(Math.random() * missionTypes.length);
+
+    return missionTypes[randomIndex];
+
+}
+
+function generateMissionId() {
+
+    return Math.floor(Math.random() * 9000) + 1000;
 
 }
 
