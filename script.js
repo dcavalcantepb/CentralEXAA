@@ -49,9 +49,7 @@ function generateMission() {
 
 function receiveMission() {
 
-    const mission = generateMission();
-
-    renderMission(mission);
+    alert("Botão funcionando!");
 
 }
 
