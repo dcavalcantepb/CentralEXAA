@@ -18,6 +18,18 @@ function changeValue(id, change, min, max) {
 
 }
 
+function receiveMission() {
+
+    const mission = generateMission();
+
+    renderMission(mission);
+
+    enterMissionMode();
+
+    console.log(mission);
+
+}
+
 function generateMission() {
 
     const missionType = getRandomMissionType();
@@ -45,15 +57,6 @@ function generateMission() {
     }
 
     return mission;
-}
-
-function receiveMission() {
-
-    const mission = generateMission();
-
-    console.log(mission);
-
-    renderMission(mission);
 
 }
 
@@ -176,6 +179,7 @@ function enterMissionMode() {
     document.getElementById("controlPanel").style.display = "none";
 
 }
+
 function updateUI() {
 
     document.getElementById("acts").innerText = missionState.acts;
