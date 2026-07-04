@@ -49,7 +49,11 @@ function generateMission() {
 
 function receiveMission() {
 
-    alert("Botão funcionando!");
+    const mission = generateMission();
+
+    console.log(mission);
+
+    renderMission(mission);
 
 }
 
