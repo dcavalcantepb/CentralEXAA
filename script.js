@@ -44,16 +44,52 @@ function generateMission() {
 
     }
 
-    console.clear();
+    return mission;
+}
 
-    console.group(`MISSÃO #${mission.id}`);
+function receiveMission() {
 
-    console.dir(mission);
+    const mission = generateMission();
 
-    console.groupEnd();
+    renderMission(mission);
 
-    document.getElementById("output").innerText =
-        `Missão #${mission.id} recebida.`;
+}
+
+function renderMission(mission) {
+
+    let html = `
+
+        <h2>${mission.title}</h2>
+
+        <p><strong>Tipo:</strong> ${mission.type}</p>
+
+        <p>${mission.briefing}</p>
+
+        <hr>
+
+    `;
+
+    mission.acts.forEach(act => {
+
+        html += `
+
+            <section class="mission-act">
+
+                <h3>Ato ${act.order}</h3>
+
+                <p>${act.description}</p>
+
+                <p><strong>Objetivo:</strong> ${act.primaryObjective}</p>
+
+                <hr>
+
+            </section>
+
+        `;
+
+    });
+
+    document.getElementById("output").innerHTML = html;
 
 }
 
