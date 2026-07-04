@@ -79,7 +79,9 @@ function createAct(index, missionType) {
 
     return {
 
-        id: index + 1,
+        id: template.id,
+
+        order: index + 1,
 
         description: template.description,
 
