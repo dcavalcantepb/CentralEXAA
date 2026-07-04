@@ -10,13 +10,13 @@ const missionDatabase = {
         opening: [
 
             {
+                id: "INF_OPEN_001",
 
                 description:
                     "Os pilotos cruzam as linhas inimigas e iniciam a infiltração.",
 
                 primaryObjective:
                     "Entrar na área operacional sem comprometer a missão."
-
             }
 
         ],
@@ -24,13 +24,13 @@ const missionDatabase = {
         middle: [
 
             {
+                id: "INF_MID_001",
 
                 description:
                     "A equipe avança pelos setores internos da instalação.",
 
                 primaryObjective:
                     "Alcançar o alvo da sabotagem."
-
             }
 
         ],
@@ -38,13 +38,13 @@ const missionDatabase = {
         ending: [
 
             {
+                id: "INF_END_001",
 
                 description:
                     "Chegou o momento de executar a sabotagem e escapar.",
 
                 primaryObjective:
                     "Destruir o alvo e iniciar a retirada."
-
             }
 
         ]
@@ -61,13 +61,13 @@ const missionDatabase = {
         opening: [
 
             {
+                id: "EXT_OPEN_001",
 
                 description:
                     "Os pilotos aproximam-se discretamente da zona de operação.",
 
                 primaryObjective:
                     "Localizar o alvo."
-
             }
 
         ],
@@ -75,13 +75,13 @@ const missionDatabase = {
         middle: [
 
             {
+                id: "EXT_MID_001",
 
                 description:
                     "O alvo foi localizado, mas ainda precisa ser protegido.",
 
                 primaryObjective:
                     "Recuperar o alvo."
-
             }
 
         ],
@@ -89,13 +89,13 @@ const missionDatabase = {
         ending: [
 
             {
+                id: "EXT_END_001",
 
                 description:
                     "Com o alvo em segurança, resta escapar.",
 
                 primaryObjective:
                     "Extrair o alvo da zona de combate."
-
             }
 
         ]
@@ -112,13 +112,13 @@ const missionDatabase = {
         opening: [
 
             {
+                id: "DEF_OPEN_001",
 
                 description:
                     "Os pilotos organizam as defesas.",
 
                 primaryObjective:
                     "Preparar a posição."
-
             }
 
         ],
@@ -126,13 +126,13 @@ const missionDatabase = {
         middle: [
 
             {
+                id: "DEF_MID_001",
 
                 description:
                     "O inimigo aumenta a pressão sobre a linha defensiva.",
 
                 primaryObjective:
                     "Conter o avanço inimigo."
-
             }
 
         ],
@@ -140,13 +140,13 @@ const missionDatabase = {
         ending: [
 
             {
+                id: "DEF_END_001",
 
                 description:
                     "As últimas ondas de ataque antecedem a chegada do apoio.",
 
                 primaryObjective:
                     "Resistir até os reforços chegarem."
-
             }
 
         ]
