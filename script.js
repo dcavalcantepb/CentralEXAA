@@ -2,7 +2,7 @@ const missionState = {
 
     acts: 3,
     threats: 2,
-    successes: 5,
+    successes: 3,
     failures: 3
 
 };
@@ -63,38 +63,26 @@ function generateMission() {
 function renderMission(mission) {
 
     let html = `
-
         <h2>${mission.title}</h2>
-
         <p><strong>Tipo:</strong> ${mission.type}</p>
-
         <p>${mission.briefing}</p>
-
         <hr>
-
     `;
 
     mission.acts.forEach(act => {
 
         html += `
-
             <section class="mission-act">
-
                 <h3>Ato ${act.order}</h3>
-
                 <p>${act.description}</p>
-
                 <p><strong>Objetivo:</strong> ${act.primaryObjective}</p>
-
                 <hr>
-
             </section>
-
         `;
 
     });
 
-    document.getElementById("output").innerHTML = html;
+    document.getElementById("missionView").innerHTML = html;
 
 }
 
@@ -135,7 +123,6 @@ function createAct(index, missionType) {
         resolution: {
 
             successThreshold: missionState.successes,
-
             failureThreshold: missionState.failures
 
         },
@@ -143,9 +130,7 @@ function createAct(index, missionType) {
         turningPoint: {
 
             description: "",
-
             successOutcome: "",
-
             failureOutcome: ""
 
         }
@@ -176,18 +161,17 @@ function generateMissionId() {
 
 function enterMissionMode() {
 
-    document.getElementById("controlPanel").style.display = "none";
+    // versão correta (não quebra layout)
+    document.getElementById("controlPanel").style.opacity = "0.3";
+    document.getElementById("controlPanel").style.pointerEvents = "none";
 
 }
 
 function updateUI() {
 
     document.getElementById("acts").innerText = missionState.acts;
-
     document.getElementById("threats").innerText = missionState.threats;
-
     document.getElementById("successes").innerText = missionState.successes;
-
     document.getElementById("failures").innerText = missionState.failures;
 
 }
