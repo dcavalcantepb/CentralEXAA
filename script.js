@@ -171,6 +171,15 @@ function generateMissionId() {
 
 }
 
+function enterMissionMode() {
+
+    document.getElementById("controlPanel")
+        .classList.add("control-hidden");
+
+    document.getElementById("missionView")
+        .classList.add("mission-fullscreen");
+
+}
 function updateUI() {
 
     document.getElementById("acts").innerText = missionState.acts;
