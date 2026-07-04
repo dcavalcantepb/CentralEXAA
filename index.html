@@ -15,7 +15,6 @@
         <div id="controlPanel" class="panel">
 
             <label>Atos</label>
-
             <div class="number-control">
                 <button onclick="changeValue('acts', -1, 2, 5)">−</button>
                 <span id="acts">2</span>
@@ -23,7 +22,6 @@
             </div>
 
             <label>Ameaças</label>
-
             <div class="number-control">
                 <button onclick="changeValue('threats', -1, 2, 5)">−</button>
                 <span id="threats">2</span>
@@ -31,7 +29,6 @@
             </div>
 
             <label>Sucessos por Ato</label>
-
             <div class="number-control">
                 <button onclick="changeValue('successes', -1, 1, 10)">−</button>
                 <span id="successes">1</span>
@@ -39,7 +36,6 @@
             </div>
 
             <label>Falhas por Ato</label>
-
             <div class="number-control">
                 <button onclick="changeValue('failures', -1, 1, 10)">−</button>
                 <span id="failures">1</span>
@@ -52,11 +48,10 @@
 
         </div>
 
-        <div id="output"></div>
+        <!-- NOVO: área oficial da missão -->
+        <div id="missionView"></div>
 
     </div>
-
-    <div id="missionView"></div>
 
     <script src="database.js"></script>
     <script src="script.js"></script>
