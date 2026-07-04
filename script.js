@@ -173,11 +173,7 @@ function generateMissionId() {
 
 function enterMissionMode() {
 
-    document.getElementById("controlPanel")
-        .classList.add("control-hidden");
-
-    document.getElementById("missionView")
-        .classList.add("mission-fullscreen");
+    document.getElementById("controlPanel").style.display = "none";
 
 }
 function updateUI() {
