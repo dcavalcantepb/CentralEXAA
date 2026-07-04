@@ -1,8 +1,10 @@
 const missionState = {
+
     acts: 3,
     threats: 2,
     successes: 5,
     failures: 3
+
 };
 
 function changeValue(id, change, min, max) {
@@ -28,7 +30,7 @@ function generateMission() {
 
         title: `Operação ${missionType.name}`,
 
-        briefing: missionType.description,
+        briefing: missionType.briefing,
 
         createdAt: new Date(),
 
@@ -51,25 +53,41 @@ function generateMission() {
     console.groupEnd();
 
     document.getElementById("output").innerText =
-        `Missão #${mission.id} recebida. Veja o console (F12).`;
+        `Missão #${mission.id} recebida.`;
 
 }
 
 function createAct(index, missionType) {
 
-    const template = missionType.acts[index];
+    let pool;
+
+    if (index === 0) {
+
+        pool = missionType.opening;
+
+    } else if (index === missionState.acts - 1) {
+
+        pool = missionType.ending;
+
+    } else {
+
+        pool = missionType.middle;
+
+    }
+
+    const template = getRandomItem(pool);
 
     return {
 
         id: index + 1,
 
-        title: template.title,
-
         description: template.description,
 
-        primaryObjective: "",
+        primaryObjective: template.primaryObjective,
 
         secondaryObjectives: [],
+
+        threats: [],
 
         resolution: {
 
@@ -79,15 +97,13 @@ function createAct(index, missionType) {
 
         },
 
-        threats: [],
-
         turningPoint: {
 
-            event: "",
+            description: "",
 
-            onSuccess: "",
+            successOutcome: "",
 
-            onFailure: ""
+            failureOutcome: ""
 
         }
 
@@ -97,11 +113,15 @@ function createAct(index, missionType) {
 
 function getRandomMissionType() {
 
-    const missionTypes = Object.values(missionDatabase);
+    return getRandomItem(Object.values(missionDatabase));
 
-    const randomIndex = Math.floor(Math.random() * missionTypes.length);
+}
 
-    return missionTypes[randomIndex];
+function getRandomItem(array) {
+
+    const randomIndex = Math.floor(Math.random() * array.length);
+
+    return array[randomIndex];
 
 }
 
@@ -114,8 +134,11 @@ function generateMissionId() {
 function updateUI() {
 
     document.getElementById("acts").innerText = missionState.acts;
+
     document.getElementById("threats").innerText = missionState.threats;
+
     document.getElementById("successes").innerText = missionState.successes;
+
     document.getElementById("failures").innerText = missionState.failures;
 
 }
