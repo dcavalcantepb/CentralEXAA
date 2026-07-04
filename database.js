@@ -7,14 +7,16 @@ const missionDatabase = {
         briefing:
             "Uma instalação inimiga precisa ser infiltrada e sabotada antes que seja tarde.",
 
-        initial: [
+        opening: [
 
             {
+
                 description:
                     "Os pilotos cruzam as linhas inimigas e iniciam a infiltração.",
 
                 primaryObjective:
                     "Entrar na área operacional sem comprometer a missão."
+
             }
 
         ],
@@ -22,23 +24,27 @@ const missionDatabase = {
         middle: [
 
             {
+
                 description:
                     "A equipe avança pelos setores internos da instalação.",
 
                 primaryObjective:
                     "Alcançar o alvo da sabotagem."
+
             }
 
         ],
 
-        final: [
+        ending: [
 
             {
+
                 description:
                     "Chegou o momento de executar a sabotagem e escapar.",
 
                 primaryObjective:
                     "Destruir o alvo e iniciar a retirada."
+
             }
 
         ]
@@ -52,14 +58,16 @@ const missionDatabase = {
         briefing:
             "Um recurso de alto valor precisa ser recuperado antes que caia em mãos inimigas.",
 
-        initial: [
+        opening: [
 
             {
+
                 description:
                     "Os pilotos aproximam-se discretamente da zona de operação.",
 
                 primaryObjective:
                     "Localizar o alvo."
+
             }
 
         ],
@@ -67,23 +75,27 @@ const missionDatabase = {
         middle: [
 
             {
+
                 description:
                     "O alvo foi localizado, mas ainda precisa ser protegido.",
 
                 primaryObjective:
                     "Recuperar o alvo."
+
             }
 
         ],
 
-        final: [
+        ending: [
 
             {
+
                 description:
                     "Com o alvo em segurança, resta escapar.",
 
                 primaryObjective:
                     "Extrair o alvo da zona de combate."
+
             }
 
         ]
@@ -97,14 +109,16 @@ const missionDatabase = {
         briefing:
             "A posição deve ser mantida até a chegada dos reforços.",
 
-        initial: [
+        opening: [
 
             {
+
                 description:
                     "Os pilotos organizam as defesas.",
 
                 primaryObjective:
                     "Preparar a posição."
+
             }
 
         ],
@@ -112,23 +126,27 @@ const missionDatabase = {
         middle: [
 
             {
+
                 description:
                     "O inimigo aumenta a pressão sobre a linha defensiva.",
 
                 primaryObjective:
                     "Conter o avanço inimigo."
+
             }
 
         ],
 
-        final: [
+        ending: [
 
             {
+
                 description:
                     "As últimas ondas de ataque antecedem a chegada do apoio.",
 
                 primaryObjective:
                     "Resistir até os reforços chegarem."
+
             }
 
         ]
