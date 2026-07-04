@@ -7,93 +7,57 @@
 </head>
 
 <body>
-    
+
     <div class="container">
 
         <h1>EXAA - CENTRAL OPERACIONAL</h1>
 
-         <div id="controlPanel" class="panel">
+        <div id="controlPanel" class="panel">
 
             <label>Atos</label>
-            
+
             <div class="number-control">
-            
-                <button onclick="changeValue('acts', -1, 2, 5)">
-                    −
-                </button>
-            
+                <button onclick="changeValue('acts', -1, 2, 5)">−</button>
                 <span id="acts">2</span>
-            
-                <button onclick="changeValue('acts', 1, 2, 5)">
-                    +
-                </button>
-            
+                <button onclick="changeValue('acts', 1, 2, 5)">+</button>
             </div>
 
             <label>Ameaças</label>
 
             <div class="number-control">
-            
-                <button onclick="changeValue('threats', -1, 2, 5)">
-                    −
-                </button>
-            
+                <button onclick="changeValue('threats', -1, 2, 5)">−</button>
                 <span id="threats">2</span>
-            
-                <button onclick="changeValue('threats', 1, 2, 5)">
-                    +
-                </button>
-            
+                <button onclick="changeValue('threats', 1, 2, 5)">+</button>
             </div>
 
             <label>Sucessos por Ato</label>
 
             <div class="number-control">
-            
-                <button onclick="changeValue('successes', -1, 1, 10)">
-                    −
-                </button>
-            
+                <button onclick="changeValue('successes', -1, 1, 10)">−</button>
                 <span id="successes">1</span>
-            
-                <button onclick="changeValue('successes', 1, 1, 10)">
-                    +
-                </button>
-            
+                <button onclick="changeValue('successes', 1, 1, 10)">+</button>
             </div>
 
             <label>Falhas por Ato</label>
 
             <div class="number-control">
-            
-                <button onclick="changeValue('failures', -1, 1, 10)">
-                    −
-                </button>
-            
+                <button onclick="changeValue('failures', -1, 1, 10)">−</button>
                 <span id="failures">1</span>
-            
-                <button onclick="changeValue('failures', 1, 1, 10)">
-                    +
-                </button>
-            
+                <button onclick="changeValue('failures', 1, 1, 10)">+</button>
             </div>
 
-           <button onclick="receiveMission()">
-            GERAR MISSÃO
+            <button onclick="receiveMission()">
+                GERAR MISSÃO
             </button>
 
         </div>
 
-         <div id="output"></div>
+        <div id="output"></div>
 
     </div>
 
-</div>
-    
-<div id="missionView">
+    <div id="missionView"></div>
 
-</div>    
-    
     <script src="database.js"></script>
     <script src="script.js"></script>
 
