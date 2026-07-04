@@ -4,33 +4,41 @@ const missionDatabase = {
 
         name: "Infiltração",
 
-        description:
-            "Missões voltadas para sabotagem, espionagem e incursões em território inimigo.",
+        briefing:
+            "Uma instalação inimiga precisa ser infiltrada e sabotada antes que seja tarde.",
 
-        acts: [
-
-            {
-                title: "Inserção",
-                description:
-                    "Os pilotos precisam atravessar as linhas inimigas sem levantar suspeitas."
-            },
+        initial: [
 
             {
-                title: "Infiltração",
                 description:
-                    "A equipe penetra na instalação procurando alcançar o objetivo principal."
-            },
+                    "Os pilotos cruzam as linhas inimigas e iniciam a infiltração.",
+
+                primaryObjective:
+                    "Entrar na área operacional sem comprometer a missão."
+            }
+
+        ],
+
+        middle: [
 
             {
-                title: "Sabotagem",
                 description:
-                    "Chegou o momento de executar a operação e destruir o alvo."
-            },
+                    "A equipe avança pelos setores internos da instalação.",
+
+                primaryObjective:
+                    "Alcançar o alvo da sabotagem."
+            }
+
+        ],
+
+        final: [
 
             {
-                title: "Extração",
                 description:
-                    "Após cumprir o objetivo, a equipe precisa escapar antes da resposta inimiga."
+                    "Chegou o momento de executar a sabotagem e escapar.",
+
+                primaryObjective:
+                    "Destruir o alvo e iniciar a retirada."
             }
 
         ]
@@ -41,33 +49,41 @@ const missionDatabase = {
 
         name: "Extração",
 
-        description:
-            "Missões focadas em recuperar pessoas, informações ou equipamentos.",
+        briefing:
+            "Um recurso de alto valor precisa ser recuperado antes que caia em mãos inimigas.",
 
-        acts: [
-
-            {
-                title: "Aproximação",
-                description:
-                    "Os pilotos avançam até a área onde o alvo foi localizado."
-            },
+        initial: [
 
             {
-                title: "Localização",
                 description:
-                    "É preciso encontrar o alvo antes que o inimigo o mova."
-            },
+                    "Os pilotos aproximam-se discretamente da zona de operação.",
+
+                primaryObjective:
+                    "Localizar o alvo."
+            }
+
+        ],
+
+        middle: [
 
             {
-                title: "Resgate",
                 description:
-                    "A equipe recupera o alvo e inicia a retirada."
-            },
+                    "O alvo foi localizado, mas ainda precisa ser protegido.",
+
+                primaryObjective:
+                    "Recuperar o alvo."
+            }
+
+        ],
+
+        final: [
 
             {
-                title: "Retirada",
                 description:
-                    "Com o alvo protegido, resta escapar das forças inimigas."
+                    "Com o alvo em segurança, resta escapar.",
+
+                primaryObjective:
+                    "Extrair o alvo da zona de combate."
             }
 
         ]
@@ -78,33 +94,41 @@ const missionDatabase = {
 
         name: "Defesa",
 
-        description:
-            "Missões focadas em manter uma posição até a chegada de reforços.",
+        briefing:
+            "A posição deve ser mantida até a chegada dos reforços.",
 
-        acts: [
-
-            {
-                title: "Preparação",
-                description:
-                    "Os pilotos organizam as defesas e avaliam os pontos vulneráveis."
-            },
+        initial: [
 
             {
-                title: "Primeira Investida",
                 description:
-                    "As forças inimigas iniciam o ataque para testar a resistência da posição."
-            },
+                    "Os pilotos organizam as defesas.",
+
+                primaryObjective:
+                    "Preparar a posição."
+            }
+
+        ],
+
+        middle: [
 
             {
-                title: "Cerco",
                 description:
-                    "O combate se intensifica enquanto os recursos começam a escassear."
-            },
+                    "O inimigo aumenta a pressão sobre a linha defensiva.",
+
+                primaryObjective:
+                    "Conter o avanço inimigo."
+            }
+
+        ],
+
+        final: [
 
             {
-                title: "Última Resistência",
                 description:
-                    "Os pilotos precisam resistir até que o apoio finalmente chegue."
+                    "As últimas ondas de ataque antecedem a chegada do apoio.",
+
+                primaryObjective:
+                    "Resistir até os reforços chegarem."
             }
 
         ]
