@@ -1,89 +1,207 @@
-body {
-    margin: 0;
-    background: #0b0b0b;
-    color: white;
-    font-family: Arial, sans-serif;
-}
+:root{
 
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 50px;
-}
+    --bg:#111827;
+    --panel:#1f2937;
+    --panel-light:#374151;
 
-h1 {
-    color: #b000ff;
-    margin-bottom: 30px;
-}
+    --primary:#8B5CF6;
+    --primary-dark:#6D28D9;
 
-.panel {
-    background: #1a1a1a;
-    padding: 20px;
-    border-radius: 10px;
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-}
-
-label {
-    margin-top: 10px;
-    margin-bottom: 5px;
-}
-
-input {
-    padding: 5px;
-    border: none;
-    border-radius: 5px;
-}
-
-button {
-    margin-top: 20px;
-    padding: 10px;
-    background: #b000ff;
-    border: none;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-button:hover {
-    background: #d000ff;
-}
-.number-control {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    margin-bottom: 20px;
+    --text:#F9FAFB;
+    --text-muted:#9CA3AF;
 
 }
 
-.number-control button {
+*{
 
-    width: 40px;
-
-    height: 40px;
-
-    font-size: 20px;
-
-    font-weight: bold;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 
 }
 
-.number-control span {
+body{
 
-    font-size: 24px;
+    font-family:Arial,Helvetica,sans-serif;
+    background:var(--bg);
+    color:var(--text);
 
-    font-weight: bold;
+    height:100vh;
+    overflow:hidden;
 
-    color: #b000ff;
+}
 
-    width: 60px;
+#app{
 
-    text-align: center;
+    display:flex;
+    height:100vh;
+
+}
+
+/* ---------------- SIDEBAR ---------------- */
+
+#sidebar{
+
+    width:320px;
+
+    background:var(--panel);
+
+    border-right:2px solid var(--primary);
+
+    transition:.3s;
+
+    display:flex;
+    flex-direction:column;
+
+}
+
+#sidebar.collapsed{
+
+    width:70px;
+
+}
+
+.sidebar-header{
+
+    display:flex;
+    align-items:center;
+    gap:15px;
+
+    padding:20px;
+
+    background:var(--primary-dark);
+
+}
+
+#toggleSidebar{
+
+    background:none;
+    border:none;
+
+    color:white;
+
+    font-size:26px;
+
+    cursor:pointer;
+
+}
+
+#controlPanel{
+
+    padding:20px;
+
+    transition:.3s;
+
+}
+
+#sidebar.collapsed #controlPanel{
+
+    display:none;
+
+}
+
+/* ---------------- CONTROLES ---------------- */
+
+label{
+
+    display:block;
+
+    margin-top:18px;
+    margin-bottom:8px;
+
+    color:var(--text-muted);
+
+}
+
+.number-control{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:12px;
+
+}
+
+.number-control button{
+
+    width:36px;
+    height:36px;
+
+    border:none;
+
+    background:var(--primary);
+
+    color:white;
+
+    cursor:pointer;
+
+    border-radius:6px;
+
+}
+
+.generate-button{
+
+    margin-top:30px;
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    background:var(--primary);
+
+    color:white;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+}
+
+/* ---------------- ÁREA DA MISSÃO ---------------- */
+
+#missionView{
+
+    flex:1;
+
+    overflow-y:auto;
+
+    padding:40px;
+
+}
+
+.welcome{
+
+    height:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:var(--text-muted);
+
+}
+
+.mission-act{
+
+    background:var(--panel);
+
+    border-left:5px solid var(--primary);
+
+    padding:20px;
+
+    margin-bottom:20px;
+
+    border-radius:8px;
 
 }
