@@ -6,37 +6,35 @@ Arquivo:
 generator.js
 
 Responsabilidade:
-Gerar toda a estrutura de uma missão.
+Orquestrar a criação de missões usando database + factories + utils.
 
-Autor:
-Danilo Cavalcante
-
+NÃO:
+- não cria entidades diretamente
+- não renderiza UI
+- não contém funções utilitárias
 ==========================================================
 */
 
 
 /* ======================================================
-   GERA UMA MISSÃO COMPLETA
+   GERAR MISSÃO COMPLETA
 ====================================================== */
 
-function generateMission() {
+function generateMission(config = missionState) {
 
     const missionType = getRandomMissionType();
 
     const mission = createEmptyMission();
 
     mission.id = generateMissionId();
+
     mission.type = missionType.name;
+
     mission.title = `Operação ${missionType.name}`;
+
     mission.briefing = missionType.briefing;
 
-    for (let i = 0; i < missionState.acts; i++) {
-
-        const act = createAct(i, missionType);
-
-        mission.acts.push(act);
-
-    }
+    mission.acts = buildActs(config, missionType);
 
     return mission;
 
@@ -44,26 +42,43 @@ function generateMission() {
 
 
 /* ======================================================
-   GERA UM ATO
+   CONSTRUIR ATOS
 ====================================================== */
 
-function createAct(index, missionType) {
+function buildActs(config, missionType) {
 
-    let pool;
+    const acts = [];
+
+    const totalActs = config.acts;
+
+    for (let i = 0; i < totalActs; i++) {
+
+        acts.push(createActFromTemplate(i, totalActs, missionType));
+
+    }
+
+    return acts;
+
+}
+
+
+/* ======================================================
+   CRIAR ATO A PARTIR DE TEMPLATE
+====================================================== */
+
+function createActFromTemplate(index, totalActs, missionType) {
+
+    let pool = null;
 
     if (index === 0) {
 
         pool = missionType.opening;
 
-    }
-
-    else if (index === missionState.acts - 1) {
+    } else if (index === totalActs - 1) {
 
         pool = missionType.ending;
 
-    }
-
-    else {
+    } else {
 
         pool = missionType.middle;
 
@@ -79,13 +94,7 @@ function createAct(index, missionType) {
 
     act.description = template.description;
 
-    act.primaryObjective = template.primaryObjective;
-
-    act.resolution.successThreshold =
-        missionState.successes;
-
-    act.resolution.failureThreshold =
-        missionState.failures;
+    act.primaryObjective = createObjectiveFromTemplate(template.primaryObjective);
 
     return act;
 
@@ -93,33 +102,16 @@ function createAct(index, missionType) {
 
 
 /* ======================================================
-   TIPO DE MISSÃO ALEATÓRIO
+   OBJETIVO (ADAPTADOR SIMPLES)
 ====================================================== */
 
-function getRandomMissionType() {
+function createObjectiveFromTemplate(text) {
 
-    return getRandomItem(
+    const obj = createEmptyObjective();
 
-        Object.values(missionDatabase)
+    obj.description = text;
 
-    );
-
-}
-
-
-/* ======================================================
-   ITEM ALEATÓRIO
-====================================================== */
-
-function getRandomItem(array) {
-
-    const randomIndex = Math.floor(
-
-        Math.random() * array.length
-
-    );
-
-    return array[randomIndex];
+    return obj;
 
 }
 
@@ -130,10 +122,19 @@ function getRandomItem(array) {
 
 function generateMissionId() {
 
-    return Math.floor(
+    return randomInt(1000, 9999);
 
-        Math.random() * 9000
+}
 
-    ) + 1000;
+
+/* ======================================================
+   ESCOLHA DE TIPO DE MISSÃO
+====================================================== */
+
+function getRandomMissionType() {
+
+    const types = Object.values(missionDatabase);
+
+    return getRandomItem(types);
 
 }
