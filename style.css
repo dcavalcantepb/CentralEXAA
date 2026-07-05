@@ -214,3 +214,15 @@ label {
 .welcome-screen h2 {
     margin-bottom: 10px;
 }
+
+.mission-act {
+    background: #151922;
+    border: 1px solid #2a2f3a;
+    border-left: 3px solid #2d6cdf;
+    padding: 18px;        /* <- aumenta estabilidade visual */
+    margin-bottom: 16px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;            /* <- isso aqui resolve “quebra visual” */
+}
