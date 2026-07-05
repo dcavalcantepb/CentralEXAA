@@ -30,21 +30,31 @@ export function renderMission(mission) {
     // =========================
 
     html += `
-        <div class="mission-header">
+        <fieldset class="mission-dossier">
 
-            <p class="mission-type">
-                ${mission.type || "—"}
-            </p>
+            <legend>Dossiê Operacional</legend>
 
-            <h2>
-                ${mission.title || "Missão sem título"}
-            </h2>
+            <div class="dossier-row">
+                <span class="dossier-label">Tipo</span>
+                <span class="dossier-value">${mission.type || "—"}</span>
+            </div>
 
-            <p class="mission-briefing">
-                ${mission.briefing || "—"}
-            </p>
+            <div class="dossier-row">
+                <span class="dossier-label">Operação</span>
+                <span class="dossier-value dossier-title">${mission.title || "Missão sem título"}</span>
+            </div>
 
-        </div>
+            <div class="dossier-row">
+                <span class="dossier-label">Atos</span>
+                <span class="dossier-value">${mission.acts.length}</span>
+            </div>
+
+            <div class="dossier-row">
+                <span class="dossier-label">Briefing</span>
+                <p class="dossier-value dossier-briefing">${mission.briefing || "—"}</p>
+            </div>
+
+        </fieldset>
     `;
 
     // =========================
@@ -206,7 +216,7 @@ function renderThreats(threats) {
 
     const items = threats.map(threat => `
         <li>
-            <strong>${threat.name}</strong> — ${threat.description}
+            <strong class="threat-name">${threat.name}</strong> — ${threat.description}
             (${threat.successesToDefeat} sucessos para derrotar, dano ${threat.damage})
         </li>
     `).join("");

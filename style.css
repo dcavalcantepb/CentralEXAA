@@ -14,13 +14,13 @@
     --color-failure: #FF6B6B;
 
     /* hierarquia tipográfica */
-    --font-size-h1: 24px;
-    --font-size-h2: 20px;
-    --font-size-h3: 17px;
-    --font-size-h4: 15px;
-    --font-size-label: 13px;
-    --font-size-body: 16px;
-    --font-size-outcome: 15px;
+    --font-size-h1: 24px;         /* títulos de página: Central do Operador */
+    --font-size-sidebar-h1: 16px; /* título da sidebar (precisa caber ao lado do menu, em uma linha) */
+    --font-size-h2: 20px;         /* título da missão dentro do dossiê */
+    --font-size-card-h1: 20px;    /* títulos de seção do card: Ato N, Objetivo Primário, Ameaças, Acompanhamento, Ponto de Virada */
+    --font-size-card-h2: 17px;    /* subtítulos do card: nome da ameaça, título do ponto de virada, rótulos de sucesso/falha */
+    --font-size-label: 15px;      /* rótulos de campo: sidebar, dossiê, tag de desdobramento */
+    --font-size-body: 16px;       /* texto de leitura: descrições, briefing, resultados */
 }
 
 /* =========================
@@ -74,10 +74,12 @@ body {
 .sidebar-header {
     display: flex;
     align-items: center;
+    gap: 12px;
     margin-bottom: 18px;
 }
 
 #sidebarToggle {
+    flex-shrink: 0;
     background: var(--color-violet);
     color: var(--color-text);
     border: none;
@@ -91,23 +93,32 @@ body {
     background: var(--color-magenta);
 }
 
+.sidebar-title {
+    flex: 1;
+    min-width: 0;
+    font-size: var(--font-size-sidebar-h1);
+    opacity: 0.9;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#sidebar.collapsed .sidebar-title {
+    display: none;
+}
+
 /* =========================
    CONTROLES
 ========================= */
-
-#controlPanel h1 {
-    font-size: var(--font-size-h1);
-    opacity: 0.9;
-    margin-bottom: 12px;
-}
 
 label {
     display: block;
     margin-top: 14px;
     margin-bottom: 6px;
     font-size: var(--font-size-label);
-    opacity: 0.7;
+    opacity: 0.8;
     letter-spacing: 1px;
+    text-align: center;
 }
 
 .number-control {
@@ -139,16 +150,30 @@ label {
 #resetMissionButton {
     width: 100%;
     margin-top: 14px;
-    padding: 10px;
+    padding: 12px;
+    font-size: var(--font-size-card-h2);
+    font-weight: bold;
     background: var(--color-magenta);
     border: none;
     color: #fff;
     cursor: pointer;
     border-radius: 6px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+#generateMissionButton:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 16px var(--color-magenta);
 }
 
 #resetMissionButton {
     background: var(--color-plum);
+}
+
+#resetMissionButton:hover {
+    transform: translateY(-1px);
+    background: var(--color-violet);
+    box-shadow: 0 0 16px var(--color-violet);
 }
 
 /* =========================
@@ -190,33 +215,55 @@ label {
 }
 
 /* =========================
-   MISSÃO HEADER
+   DOSSIÊ DA MISSÃO (CABEÇALHO ESTILO DOCUMENTO MILITAR)
 ========================= */
 
-.mission-header {
-    margin-bottom: 26px;
-    padding-bottom: 18px;
-    border-bottom: 1px solid var(--color-plum);
+.mission-dossier {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    row-gap: 14px;
+    column-gap: 20px;
+    align-items: baseline;
+    background: var(--color-abyss);
+    border: 1px solid var(--color-plum);
+    border-radius: 4px;
+    padding: 22px 26px 24px;
+    margin: 10px 0 26px;
 }
 
-.mission-type {
+.mission-dossier legend {
+    padding: 0 10px;
+    margin-left: 6px;
     font-size: var(--font-size-label);
     letter-spacing: 2px;
-    opacity: 0.7;
     text-transform: uppercase;
-    margin-bottom: 6px;
+    color: var(--color-magenta);
 }
 
-.mission-header h2 {
-    font-size: var(--font-size-h2);
-    margin-bottom: 10px;
+.dossier-row {
+    display: contents;
 }
 
-.mission-briefing {
+.dossier-label {
+    font-size: var(--font-size-label);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0.75;
+    white-space: nowrap;
+}
+
+.dossier-value {
     font-size: var(--font-size-body);
+}
+
+.dossier-title {
+    font-size: var(--font-size-h2);
+    font-weight: bold;
+}
+
+.dossier-briefing {
     line-height: 1.6;
     opacity: 0.9;
-    margin-top: 6px;
 }
 
 /* =========================
@@ -239,7 +286,8 @@ label {
 }
 
 .mission-act h3 {
-    font-size: var(--font-size-h3);
+    font-size: var(--font-size-card-h1);
+    font-weight: bold;
     margin-bottom: 4px;
 }
 
@@ -264,9 +312,10 @@ label {
 
 /* labels */
 .act-label {
-    font-size: var(--font-size-label);
+    font-size: var(--font-size-card-h1);
+    font-weight: bold;
     letter-spacing: 1px;
-    opacity: 0.7;
+    opacity: 0.95;
     text-transform: uppercase;
 }
 
@@ -292,12 +341,12 @@ label {
 }
 
 .turning-title {
-    font-size: var(--font-size-h4);
+    font-size: var(--font-size-card-h2);
     font-weight: bold;
 }
 
 .turning-outcome {
-    font-size: var(--font-size-outcome);
+    font-size: var(--font-size-body);
     line-height: 1.5;
     opacity: 0.85;
 }
@@ -365,6 +414,10 @@ label {
     opacity: 0.9;
 }
 
+.threat-name {
+    font-size: var(--font-size-card-h2);
+}
+
 /* =========================
    ACOMPANHAMENTO (CHECKBOXES)
 ========================= */
@@ -380,9 +433,10 @@ label {
 }
 
 .progress-label {
-    font-size: var(--font-size-label);
-    min-width: 64px;
-    opacity: 0.85;
+    font-size: var(--font-size-card-h2);
+    font-weight: bold;
+    min-width: 74px;
+    opacity: 0.9;
 }
 
 .progress-label.progress-success {
