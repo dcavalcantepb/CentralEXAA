@@ -41,29 +41,36 @@ function renderMission(mission) {
 
     mission.acts.forEach(act => {
 
-        html += `
-            <section class="mission-act">
+       html += `
+    <section class="mission-act">
 
-                <h3>
-                    Ato ${act.order}
-                </h3>
+        <h3>Ato ${act.order}</h3>
 
-                <p class="act-description">
-                    ${act.description}
-                </p>
+        <p class="act-description">
+            ${act.description}
+        </p>
 
-                <p class="act-objective-title">
-                    Objetivo Primário
-                </p>
+        <p class="act-objective-title">
+            Objetivo Primário
+        </p>
 
-                <p class="act-objective">
-                    ${act.primaryObjective}
-                </p>
+        <p class="act-objective">
+            ${act.primaryObjective}
+        </p>
 
-            </section>
-        `;
+        <!-- TURNING POINT -->
+        <div class="act-turning-point">
 
-    });
+            <p class="turning-title">Ponto de Virada</p>
+
+            <p class="turning-text">
+                ${act.turningPoint?.description || ""}
+            </p>
+
+        </div>
+
+    </section>
+`;
 
     // =========================
     // INJEÇÃO NO DOM
