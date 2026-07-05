@@ -1,8 +1,20 @@
-// ===============================
-// EXAA - RENDERER (FINAL LIMPO)
-// ===============================
+/*
+==========================================================
+EXAA CENTRAL OPERACIONAL
 
-function renderMission(mission) {
+Arquivo:
+renderer.js
+
+Responsabilidade:
+Renderizar a missão gerada e o status do terminal.
+
+Autor:
+Danilo Cavalcante
+
+==========================================================
+*/
+
+export function renderMission(mission) {
 
     const container = document.getElementById("missionView");
 
@@ -55,7 +67,7 @@ function renderMission(mission) {
                     <p class="act-label">Objetivo Primário</p>
 
                     <p class="act-objective">
-                        ${act.primaryObjective || "—"}
+                        ${act.primaryObjective?.description || "—"}
                     </p>
 
                 </div>
@@ -76,9 +88,16 @@ function renderMission(mission) {
 
     container.innerHTML = html;
 
-    // status opcional (se existir no HTML)
-    const status = document.getElementById("terminalStatus");
-    if (status) {
-        status.innerText = "Missão gerada e carregada.";
-    }
+    setStatus("Missão gerada e carregada.");
+}
+
+
+/* ======================================================
+   EXIBE UMA MENSAGEM NO TERMINAL
+====================================================== */
+
+export function setStatus(message) {
+
+    document.getElementById("terminalStatus").textContent = message;
+
 }

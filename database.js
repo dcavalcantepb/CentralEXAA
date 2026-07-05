@@ -1,4 +1,20 @@
-const missionDatabase = {
+/*
+==========================================================
+EXAA CENTRAL OPERACIONAL
+
+Arquivo:
+database.js
+
+Responsabilidade:
+Armazenar os dados estáticos de tipos de missão (templates).
+
+Autor:
+Danilo Cavalcante
+
+==========================================================
+*/
+
+export const missionDatabase = {
 
     infiltration: {
 

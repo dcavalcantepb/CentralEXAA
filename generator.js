@@ -15,12 +15,17 @@ NÃO:
 ==========================================================
 */
 
+import { missionDatabase } from "./database.js";
+import { createEmptyMission, createEmptyAct, createEmptyObjective } from "./factories.js";
+import { getRandomItem, randomInt } from "./utils.js";
+import { missionState } from "./state.js";
+
 
 /* ======================================================
    GERAR MISSÃO COMPLETA
 ====================================================== */
 
-function generateMission(config = missionState) {
+export function generateMission(config = missionState) {
 
     const missionType = getRandomMissionType();
 

@@ -14,22 +14,19 @@ Danilo Cavalcante
 ==========================================================
 */
 
+import { missionState, setConfigValue, setCurrentMission, setSidebarOpen } from "./state.js";
+import { clamp } from "./utils.js";
+import { generateMission } from "./generator.js";
+import { renderMission, setStatus } from "./renderer.js";
+
 
 /* ======================================================
    ALTERAÇÃO DOS CONTROLES
 ====================================================== */
 
-function changeValue(id, change, min, max) {
+export function changeValue(field, change, min, max) {
 
-    missionState[id] += change;
-
-    if (missionState[id] < min) {
-        missionState[id] = min;
-    }
-
-    if (missionState[id] > max) {
-        missionState[id] = max;
-    }
+    setConfigValue(field, clamp(missionState[field] + change, min, max));
 
     updateUI();
 
@@ -40,7 +37,7 @@ function changeValue(id, change, min, max) {
    ATUALIZA OS VALORES EXIBIDOS NA SIDEBAR
 ====================================================== */
 
-function updateUI() {
+export function updateUI() {
 
     document.getElementById("acts").textContent = missionState.acts;
 
@@ -57,7 +54,9 @@ function updateUI() {
    ABRIR / FECHAR SIDEBAR
 ====================================================== */
 
-function toggleSidebar() {
+export function toggleSidebar() {
+
+    setSidebarOpen(!missionState.isSidebarOpen);
 
     document
         .getElementById("sidebar")
@@ -71,11 +70,11 @@ function toggleSidebar() {
    BOTÃO GERAR MISSÃO
 ====================================================== */
 
-function receiveMission() {
+export function receiveMission() {
 
     const mission = generateMission();
 
-    missionState.currentMission = mission;
+    setCurrentMission(mission);
 
     renderMission(mission);
 
@@ -86,9 +85,9 @@ function receiveMission() {
    LIMPA A MISSÃO ATUAL
 ====================================================== */
 
-function resetMission() {
+export function resetMission() {
 
-    missionState.currentMission = null;
+    setCurrentMission(null);
 
     document.getElementById("missionView").innerHTML = `
 
@@ -107,15 +106,6 @@ function resetMission() {
 
     `;
 
-}
-
-
-/* ======================================================
-   EXIBE UMA MENSAGEM NO TERMINAL
-====================================================== */
-
-function setStatus(message) {
-
-    document.getElementById("terminalStatus").textContent = message;
+    setStatus("");
 
 }

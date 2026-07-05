@@ -20,12 +20,11 @@
     <!-- SIDEBAR                   -->
     <!-- ========================= -->
 
-    <aside id="sidebar" class="expanded">
+    <aside id="sidebar">
 
         <div class="sidebar-header">
 
-            <button id="sidebarToggle"
-                    onclick="toggleSidebar()">
+            <button id="sidebarToggle">
 
                 ☰
 
@@ -43,13 +42,13 @@
 
             <div class="number-control">
 
-                <button onclick="changeValue('acts',-1,2,5)">
+                <button class="stepper" data-field="acts" data-step="-1" data-min="2" data-max="5">
                     −
                 </button>
 
                 <span id="acts">3</span>
 
-                <button onclick="changeValue('acts',1,2,5)">
+                <button class="stepper" data-field="acts" data-step="1" data-min="2" data-max="5">
                     +
                 </button>
 
@@ -59,13 +58,13 @@
 
             <div class="number-control">
 
-                <button onclick="changeValue('threats',-1,2,5)">
+                <button class="stepper" data-field="threats" data-step="-1" data-min="2" data-max="5">
                     −
                 </button>
 
                 <span id="threats">2</span>
 
-                <button onclick="changeValue('threats',1,2,5)">
+                <button class="stepper" data-field="threats" data-step="1" data-min="2" data-max="5">
                     +
                 </button>
 
@@ -75,13 +74,13 @@
 
             <div class="number-control">
 
-                <button onclick="changeValue('successes',-1,1,10)">
+                <button class="stepper" data-field="successes" data-step="-1" data-min="1" data-max="10">
                     −
                 </button>
 
-                <span id="successes">5</span>
+                <span id="successes">3</span>
 
-                <button onclick="changeValue('successes',1,1,10)">
+                <button class="stepper" data-field="successes" data-step="1" data-min="1" data-max="10">
                     +
                 </button>
 
@@ -91,27 +90,25 @@
 
             <div class="number-control">
 
-                <button onclick="changeValue('failures',-1,1,10)">
+                <button class="stepper" data-field="failures" data-step="-1" data-min="1" data-max="10">
                     −
                 </button>
 
                 <span id="failures">3</span>
 
-                <button onclick="changeValue('failures',1,1,10)">
+                <button class="stepper" data-field="failures" data-step="1" data-min="1" data-max="10">
                     +
                 </button>
 
             </div>
 
-            <button id="generateMissionButton"
-                    onclick="receiveMission()">
+            <button id="generateMissionButton">
 
                 GERAR MISSÃO
 
             </button>
 
-            <button id="resetMissionButton"
-                    onclick="resetMission()">
+            <button id="resetMissionButton">
 
                 NOVA MISSÃO
 
@@ -130,6 +127,8 @@
         <header id="terminalHeader">
 
             <h1>CENTRAL DO OPERADOR</h1>
+
+            <p id="terminalStatus"></p>
 
         </header>
 
@@ -154,15 +153,7 @@
 
 </div>
 
-<script src="./state.js"></script>
-    
-<script src="./database.js"></script>
-<script src="./utils.js"></script>
-<script src="./factories.js"></script>
-<script src="./generator.js"></script>
-<script src="./renderer.js"></script>
-<script src="./ui.js"></script>
-<script src="./script.js"></script>
+<script type="module" src="./script.js"></script>
 
 </body>
 

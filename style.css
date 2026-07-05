@@ -1,5 +1,18 @@
 
 /* =========================
+   PALETA (SYNTHWAVE)
+========================= */
+
+:root {
+    --color-void: #0D1026;
+    --color-abyss: #1D1340;
+    --color-plum: #381659;
+    --color-violet: #6C32A6;
+    --color-magenta: #7D29F2;
+    --color-text: #e6e6e6;
+}
+
+/* =========================
    RESET BASE
 ========================= */
 
@@ -11,8 +24,8 @@
 }
 
 body {
-    background: #0f1115;
-    color: #e6e6e6;
+    background: var(--color-void);
+    color: var(--color-text);
 }
 
 /* =========================
@@ -30,10 +43,21 @@ body {
 
 #sidebar {
     width: 320px;
-    background: #151922;
-    border-right: 1px solid #2a2f3a;
+    background: var(--color-abyss);
+    border-right: 1px solid var(--color-plum);
     padding: 16px;
     overflow-y: auto;
+    transition: width 0.2s ease;
+}
+
+#sidebar.collapsed {
+    width: 56px;
+    padding: 16px 8px;
+    overflow: hidden;
+}
+
+#sidebar.collapsed #controlPanel {
+    display: none;
 }
 
 .sidebar-header {
@@ -71,13 +95,13 @@ label {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #1c2230;
+    background: var(--color-plum);
     padding: 6px 10px;
     border-radius: 6px;
 }
 
 .number-control button {
-    background: #2a3142;
+    background: var(--color-violet);
     border: none;
     color: #fff;
     padding: 4px 10px;
@@ -97,7 +121,7 @@ label {
     width: 100%;
     margin-top: 14px;
     padding: 10px;
-    background: #2d6cdf;
+    background: var(--color-magenta);
     border: none;
     color: #fff;
     cursor: pointer;
@@ -105,7 +129,7 @@ label {
 }
 
 #resetMissionButton {
-    background: #444;
+    background: var(--color-plum);
 }
 
 /* =========================
@@ -153,7 +177,7 @@ label {
 .mission-header {
     margin-bottom: 26px;
     padding-bottom: 18px;
-    border-bottom: 1px solid #2a2f3a;
+    border-bottom: 1px solid var(--color-plum);
 }
 
 .mission-type {
@@ -180,9 +204,9 @@ label {
 ========================= */
 
 .mission-act {
-    background: #151922;
-    border: 1px solid #2a2f3a;
-    border-left: 3px solid #2d6cdf;
+    background: var(--color-abyss);
+    border: 1px solid var(--color-plum);
+    border-left: 3px solid var(--color-magenta);
 
     padding: 18px;
     margin-bottom: 14px;
@@ -214,7 +238,7 @@ label {
     flex-direction: column;
     gap: 6px;
     padding-top: 10px;
-    border-top: 1px solid #2a2f3a;
+    border-top: 1px solid var(--color-plum);
 }
 
 /* labels */
@@ -242,5 +266,5 @@ label {
 }
 
 .act-turning {
-    border-top: 1px dashed #3a3f4a;
+    border-top: 1px dashed var(--color-violet);
 }

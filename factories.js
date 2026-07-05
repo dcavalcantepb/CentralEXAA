@@ -19,7 +19,7 @@ Danilo Cavalcante
    MISSÃO
 ====================================================== */
 
-function createEmptyMission() {
+export function createEmptyMission() {
 
     return {
 
@@ -52,7 +52,7 @@ function createEmptyMission() {
    ATO
 ====================================================== */
 
-function createEmptyAct() {
+export function createEmptyAct() {
 
     return {
 
@@ -95,7 +95,7 @@ function createEmptyAct() {
    OBJETIVO
 ====================================================== */
 
-function createEmptyObjective() {
+export function createEmptyObjective() {
 
     return {
 
@@ -116,7 +116,7 @@ function createEmptyObjective() {
    AMEAÇA
 ====================================================== */
 
-function createEmptyThreat() {
+export function createEmptyThreat() {
 
     return {
 
@@ -141,7 +141,7 @@ function createEmptyThreat() {
    PONTO DE VIRADA
 ====================================================== */
 
-function createEmptyTurningPoint() {
+export function createEmptyTurningPoint() {
 
     return {
 

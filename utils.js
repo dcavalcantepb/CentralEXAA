@@ -19,7 +19,7 @@ Danilo Cavalcante
    ESCOLHE UM ITEM ALEATÓRIO DE UM ARRAY
 ====================================================== */
 
-function getRandomItem(array) {
+export function getRandomItem(array) {
 
     if (!array || array.length === 0) {
         return null;
@@ -36,7 +36,7 @@ function getRandomItem(array) {
    NÚMERO ALEATÓRIO ENTRE MIN E MAX (INCLUSIVO)
 ====================================================== */
 
-function randomInt(min, max) {
+export function randomInt(min, max) {
 
     return Math.floor(Math.random() * (max - min + 1)) + min;
 
@@ -47,7 +47,7 @@ function randomInt(min, max) {
    LIMITA UM VALOR ENTRE MÍNIMO E MÁXIMO
 ====================================================== */
 
-function clamp(value, min, max) {
+export function clamp(value, min, max) {
 
     if (value < min) return min;
     if (value > max) return max;
@@ -61,7 +61,7 @@ function clamp(value, min, max) {
    EMBARALHA UM ARRAY (FISHER-YATES)
 ====================================================== */
 
-function shuffleArray(array) {
+export function shuffleArray(array) {
 
     const arr = [...array];
 
@@ -82,7 +82,7 @@ function shuffleArray(array) {
    CAPITALIZA PRIMEIRA LETRA
 ====================================================== */
 
-function capitalize(text) {
+export function capitalize(text) {
 
     if (!text) return "";
 
