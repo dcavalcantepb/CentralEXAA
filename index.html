@@ -1,60 +1,108 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
+
     <meta charset="UTF-8">
-    <title>EXAA - Mission Editor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EXAA - Central Operacional</title>
+
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-    <div class="container">
+<div id="app">
 
-        <h1>EXAA - CENTRAL OPERACIONAL</h1>
+    <aside id="sidebar" class="expanded">
 
-        <div id="controlPanel" class="panel">
+        <div class="sidebar-header">
+
+            <button id="toggleSidebar" onclick="toggleSidebar()">
+                ☰
+            </button>
+
+            <h2>Central Operacional</h2>
+
+        </div>
+
+        <div id="controlPanel">
 
             <label>Atos</label>
+
             <div class="number-control">
-                <button onclick="changeValue('acts', -1, 2, 5)">−</button>
-                <span id="acts">2</span>
-                <button onclick="changeValue('acts', 1, 2, 5)">+</button>
+
+                <button onclick="changeValue('acts',-1,2,5)">−</button>
+
+                <span id="acts">3</span>
+
+                <button onclick="changeValue('acts',1,2,5)">+</button>
+
             </div>
 
             <label>Ameaças</label>
+
             <div class="number-control">
-                <button onclick="changeValue('threats', -1, 2, 5)">−</button>
+
+                <button onclick="changeValue('threats',-1,2,5)">−</button>
+
                 <span id="threats">2</span>
-                <button onclick="changeValue('threats', 1, 2, 5)">+</button>
+
+                <button onclick="changeValue('threats',1,2,5)">+</button>
+
             </div>
 
             <label>Sucessos por Ato</label>
+
             <div class="number-control">
-                <button onclick="changeValue('successes', -1, 1, 10)">−</button>
-                <span id="successes">1</span>
-                <button onclick="changeValue('successes', 1, 1, 10)">+</button>
+
+                <button onclick="changeValue('successes',-1,1,10)">−</button>
+
+                <span id="successes">5</span>
+
+                <button onclick="changeValue('successes',1,1,10)">+</button>
+
             </div>
 
             <label>Falhas por Ato</label>
+
             <div class="number-control">
-                <button onclick="changeValue('failures', -1, 1, 10)">−</button>
-                <span id="failures">1</span>
-                <button onclick="changeValue('failures', 1, 1, 10)">+</button>
+
+                <button onclick="changeValue('failures',-1,1,10)">−</button>
+
+                <span id="failures">3</span>
+
+                <button onclick="changeValue('failures',1,1,10)">+</button>
+
             </div>
 
-            <button onclick="receiveMission()">
+            <button class="generate-button" onclick="receiveMission()">
+
                 GERAR MISSÃO
+
             </button>
 
         </div>
 
-        <!-- NOVO: área oficial da missão -->
-        <div id="missionView"></div>
+    </aside>
 
-    </div>
+    <main id="missionView">
 
-    <script src="database.js"></script>
-    <script src="script.js"></script>
+        <div class="welcome">
+
+            <h1>EXAA</h1>
+
+            <p>Aguardando geração de missão...</p>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="database.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
