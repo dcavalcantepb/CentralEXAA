@@ -439,3 +439,76 @@ button{
     border-radius:6px;
 
 }
+
+/* =========================
+   BASE DE LEITURA DOS CARDS
+========================= */
+
+#missionView {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* =========================
+   CABEÇALHO DA MISSÃO
+========================= */
+
+.mission-header {
+    margin-bottom: 18px;
+}
+
+.mission-header h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.mission-type {
+    margin-bottom: 10px; /* espaço entre tipo e briefing */
+    opacity: 0.8;
+    font-weight: 500;
+}
+
+.mission-briefing {
+    margin-top: 6px;
+    margin-bottom: 28px; /* espaço forte antes dos atos */
+    line-height: 1.5;
+    opacity: 0.95;
+}
+
+/* =========================
+   ATOS
+========================= */
+
+.mission-act {
+    padding: 14px 16px;
+    border-left: 3px solid #666;
+    margin-bottom: 18px;
+}
+
+/* título do ato */
+.mission-act h3 {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+}
+
+/* descrição do ato */
+.act-description {
+    margin-bottom: 14px; /* separa da área de objetivo */
+    line-height: 1.5;
+}
+
+/* objetivo */
+.act-objective-title {
+    margin: 0 0 6px 0;
+    font-size: 14px;
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.act-objective {
+    margin: 0;
+    line-height: 1.4;
+}
