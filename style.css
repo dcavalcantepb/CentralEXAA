@@ -31,7 +31,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Monaco, Consolas, "Courier New", monospace;
+    font-family: "Lucida Console", Monaco, Consolas, "Courier New", monospace;
 }
 
 body {
@@ -234,10 +234,11 @@ label {
 .mission-dossier legend {
     padding: 0 10px;
     margin-left: 6px;
-    font-size: var(--font-size-label);
+    font-size: var(--font-size-h2);
+    font-weight: bold;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--color-magenta);
+    color: var(--color-text);
 }
 
 .dossier-row {
@@ -258,7 +259,6 @@ label {
 
 .dossier-title {
     font-size: var(--font-size-h2);
-    font-weight: bold;
 }
 
 .dossier-briefing {
@@ -288,6 +288,8 @@ label {
 .mission-act h3 {
     font-size: var(--font-size-card-h1);
     font-weight: bold;
+    text-transform: uppercase;
+    color: var(--color-magenta);
     margin-bottom: 4px;
 }
 
@@ -315,7 +317,7 @@ label {
     font-size: var(--font-size-card-h1);
     font-weight: bold;
     letter-spacing: 1px;
-    opacity: 0.95;
+    color: var(--color-magenta);
     text-transform: uppercase;
 }
 

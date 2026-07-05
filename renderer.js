@@ -40,7 +40,7 @@ export function renderMission(mission) {
             </div>
 
             <div class="dossier-row">
-                <span class="dossier-label">Operação</span>
+                <span class="dossier-label">Codinome</span>
                 <span class="dossier-value dossier-title">${mission.title || "Missão sem título"}</span>
             </div>
 
@@ -101,11 +101,11 @@ export function renderMission(mission) {
                     </p>
 
                     <p class="turning-outcome outcome-success">
-                        <span class="outcome-tag">Sucesso</span>${act.turningPoint?.successOutcome || "—"}
+                        <span class="outcome-tag">Sucesso:</span> ${act.turningPoint?.successOutcome || "—"}
                     </p>
 
                     <p class="turning-outcome outcome-failure">
-                        <span class="outcome-tag">Falha</span>${act.turningPoint?.failureOutcome || "—"}
+                        <span class="outcome-tag">Falha:</span> ${act.turningPoint?.failureOutcome || "—"}
                     </p>
 
                 </div>
