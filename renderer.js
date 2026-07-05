@@ -90,12 +90,12 @@ export function renderMission(mission) {
                         ${act.turningPoint?.description || "—"}
                     </p>
 
-                    <p class="turning-outcome">
-                        Sucesso: ${act.turningPoint?.successOutcome || "—"}
+                    <p class="turning-outcome outcome-success">
+                        <span class="outcome-tag">Sucesso</span>${act.turningPoint?.successOutcome || "—"}
                     </p>
 
-                    <p class="turning-outcome">
-                        Falha: ${act.turningPoint?.failureOutcome || "—"}
+                    <p class="turning-outcome outcome-failure">
+                        <span class="outcome-tag">Falha</span>${act.turningPoint?.failureOutcome || "—"}
                     </p>
 
                 </div>
@@ -187,9 +187,9 @@ function updateTurningPointState(actEl) {
     const successCount = actEl.querySelectorAll(".check-success:checked").length;
     const failureCount = actEl.querySelectorAll(".check-failure:checked").length;
 
-    const ready = successCount >= successThreshold || failureCount >= failureThreshold;
+    actEl.querySelector(".outcome-success").classList.toggle("outcome-ready", successCount >= successThreshold);
 
-    actEl.querySelector(".act-turning").classList.toggle("turning-ready", ready);
+    actEl.querySelector(".outcome-failure").classList.toggle("outcome-ready", failureCount >= failureThreshold);
 
 }
 
