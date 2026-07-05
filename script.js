@@ -22,7 +22,6 @@ const appState = {
     currentMission: null
 
 };
-
 function initializeApp() {
 
     console.clear();
@@ -36,4 +35,5 @@ function initializeApp() {
 
 }
 
-window.onload = initializeApp;
+/* Executa apenas UMA vez quando o DOM estiver pronto */
+window.addEventListener("DOMContentLoaded", initializeApp);
