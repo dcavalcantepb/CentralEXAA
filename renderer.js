@@ -1,5 +1,5 @@
 // ===============================
-// EXAA - RENDERER
+// EXAA - RENDERER (FINAL LIMPO)
 // ===============================
 
 function renderMission(mission) {
@@ -7,7 +7,7 @@ function renderMission(mission) {
     const container = document.getElementById("missionView");
 
     if (!container) {
-        console.error("missionView element not found");
+        console.error("missionView not found");
         return;
     }
 
@@ -21,61 +21,64 @@ function renderMission(mission) {
         <div class="mission-header">
 
             <p class="mission-type">
-                ${mission.type}
+                ${mission.type || "—"}
             </p>
 
             <h2>
-                ${mission.title}
+                ${mission.title || "Missão sem título"}
             </h2>
 
             <p class="mission-briefing">
-                ${mission.briefing}
+                ${mission.briefing || "—"}
             </p>
 
         </div>
     `;
 
     // =========================
-    // ATOS DA MISSÃO
+    // ATOS
     // =========================
 
     mission.acts.forEach(act => {
 
-       html += `
-    <section class="mission-act">
+        html += `
+            <section class="mission-act">
 
-        <h3>Ato ${act.order}</h3>
+                <h3>Ato ${act.order}</h3>
 
-        <p class="act-description">
-            ${act.description}
-        </p>
+                <p class="act-description">
+                    ${act.description || "—"}
+                </p>
 
-        <p class="act-objective-title">
-            Objetivo Primário
-        </p>
+                <div class="act-section">
 
-        <p class="act-objective">
-            ${act.primaryObjective}
-        </p>
+                    <p class="act-label">Objetivo Primário</p>
 
-        <!-- TURNING POINT -->
-        <div class="act-turning-point">
+                    <p class="act-objective">
+                        ${act.primaryObjective || "—"}
+                    </p>
 
-            <p class="turning-title">Ponto de Virada</p>
+                </div>
 
-            <p class="turning-text">
-                ${act.turningPoint?.description || ""}
-            </p>
+                <div class="act-section act-turning">
 
-        </div>
+                    <p class="act-label">Ponto de Virada</p>
 
-    </section>
-`;
+                    <p class="turning-text">
+                        ${act.turningPoint?.description || "—"}
+                    </p>
 
-    // =========================
-    // INJEÇÃO NO DOM
-    // =========================
+                </div>
+
+            </section>
+        `;
+    });
 
     container.innerHTML = html;
 
+    // status opcional (se existir no HTML)
+    const status = document.getElementById("terminalStatus");
+    if (status) {
+        status.innerText = "Missão gerada e carregada.";
+    }
 }
