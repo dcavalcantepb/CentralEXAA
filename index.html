@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 
     <meta charset="UTF-8">
@@ -15,29 +16,42 @@
 
 <div id="app">
 
+    <!-- ========================= -->
+    <!-- SIDEBAR                   -->
+    <!-- ========================= -->
+
     <aside id="sidebar" class="expanded">
 
         <div class="sidebar-header">
 
-            <button id="toggleSidebar" onclick="toggleSidebar()">
+            <button id="sidebarToggle"
+                    onclick="toggleSidebar()">
+
                 ☰
+
             </button>
 
-            <h2>Central Operacional</h2>
+            <h2>EXAA</h2>
 
         </div>
 
         <div id="controlPanel">
 
+            <h3>Configuração da Missão</h3>
+
             <label>Atos</label>
 
             <div class="number-control">
 
-                <button onclick="changeValue('acts',-1,2,5)">−</button>
+                <button onclick="changeValue('acts',-1,2,5)">
+                    −
+                </button>
 
                 <span id="acts">3</span>
 
-                <button onclick="changeValue('acts',1,2,5)">+</button>
+                <button onclick="changeValue('acts',1,2,5)">
+                    +
+                </button>
 
             </div>
 
@@ -45,11 +59,15 @@
 
             <div class="number-control">
 
-                <button onclick="changeValue('threats',-1,2,5)">−</button>
+                <button onclick="changeValue('threats',-1,2,5)">
+                    −
+                </button>
 
                 <span id="threats">2</span>
 
-                <button onclick="changeValue('threats',1,2,5)">+</button>
+                <button onclick="changeValue('threats',1,2,5)">
+                    +
+                </button>
 
             </div>
 
@@ -57,11 +75,15 @@
 
             <div class="number-control">
 
-                <button onclick="changeValue('successes',-1,1,10)">−</button>
+                <button onclick="changeValue('successes',-1,1,10)">
+                    −
+                </button>
 
                 <span id="successes">5</span>
 
-                <button onclick="changeValue('successes',1,1,10)">+</button>
+                <button onclick="changeValue('successes',1,1,10)">
+                    +
+                </button>
 
             </div>
 
@@ -69,17 +91,29 @@
 
             <div class="number-control">
 
-                <button onclick="changeValue('failures',-1,1,10)">−</button>
+                <button onclick="changeValue('failures',-1,1,10)">
+                    −
+                </button>
 
                 <span id="failures">3</span>
 
-                <button onclick="changeValue('failures',1,1,10)">+</button>
+                <button onclick="changeValue('failures',1,1,10)">
+                    +
+                </button>
 
             </div>
 
-            <button class="generate-button" onclick="receiveMission()">
+            <button id="generateMissionButton"
+                    onclick="receiveMission()">
 
                 GERAR MISSÃO
+
+            </button>
+
+            <button id="resetMissionButton"
+                    onclick="resetMission()">
+
+                NOVA MISSÃO
 
             </button>
 
@@ -87,15 +121,40 @@
 
     </aside>
 
-    <main id="missionView">
+    <!-- ========================= -->
+    <!-- TERMINAL                  -->
+    <!-- ========================= -->
 
-        <div class="welcome">
+    <main id="terminal">
 
-            <h1>EXAA</h1>
+        <header id="terminalHeader">
 
-            <p>Aguardando geração de missão...</p>
+            <h1>CENTRAL OPERACIONAL</h1>
 
-        </div>
+            <p id="terminalStatus">
+
+                Aguardando geração de missão...
+
+            </p>
+
+        </header>
+
+        <section id="missionView">
+
+            <div class="welcome-screen">
+
+                <h2>EXAA</h2>
+
+                <p>
+
+                    Configure a missão no painel lateral e pressione
+                    <strong>GERAR MISSÃO</strong>.
+
+                </p>
+
+            </div>
+
+        </section>
 
     </main>
 
@@ -105,4 +164,5 @@
 <script src="script.js"></script>
 
 </body>
+
 </html>
