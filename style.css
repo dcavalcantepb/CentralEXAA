@@ -276,3 +276,97 @@ label {
 .act-turning {
     border-top: 1px dashed var(--color-violet);
 }
+
+.turning-title {
+    font-weight: bold;
+}
+
+.turning-outcome {
+    font-size: 13px;
+    line-height: 1.5;
+    opacity: 0.85;
+}
+
+/* brilho de destaque quando o limiar de sucessos/falhas é atingido */
+@keyframes turning-glow {
+    0%, 100% {
+        text-shadow: 0 0 4px var(--color-magenta), 0 0 8px var(--color-magenta);
+    }
+    50% {
+        text-shadow: 0 0 14px var(--color-magenta), 0 0 28px var(--color-magenta);
+    }
+}
+
+.act-turning.turning-ready {
+    border-top-color: var(--color-magenta);
+}
+
+.act-turning.turning-ready .turning-title,
+.act-turning.turning-ready .turning-text {
+    color: #fff;
+    animation: turning-glow 1.6s ease-in-out infinite;
+}
+
+/* =========================
+   AMEAÇAS
+========================= */
+
+.threat-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.threat-list li {
+    line-height: 1.5;
+    opacity: 0.9;
+}
+
+/* =========================
+   ACOMPANHAMENTO (CHECKBOXES)
+========================= */
+
+.progress-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.progress-row + .progress-row {
+    margin-top: 6px;
+}
+
+.progress-label {
+    font-size: 12px;
+    min-width: 64px;
+    opacity: 0.85;
+}
+
+.progress-label.progress-success {
+    color: #7CFFB2;
+}
+
+.progress-label.progress-failure {
+    color: #FF6B6B;
+}
+
+.checkbox-group {
+    display: flex;
+    gap: 6px;
+}
+
+.check-success,
+.check-failure {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.check-success {
+    accent-color: #7CFFB2;
+}
+
+.check-failure {
+    accent-color: #FF6B6B;
+}

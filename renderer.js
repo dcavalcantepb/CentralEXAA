@@ -54,7 +54,9 @@ export function renderMission(mission) {
     mission.acts.forEach(act => {
 
         html += `
-            <section class="mission-act">
+            <section class="mission-act"
+                     data-success-threshold="${act.resolution.successThreshold}"
+                     data-failure-threshold="${act.resolution.failureThreshold}">
 
                 <h3>Ato ${act.order}</h3>
 
@@ -72,12 +74,28 @@ export function renderMission(mission) {
 
                 </div>
 
+                ${renderThreats(act.threats)}
+
+                ${renderProgress(act.resolution)}
+
                 <div class="act-section act-turning">
 
                     <p class="act-label">Ponto de Virada</p>
 
+                    <p class="turning-title">
+                        ${act.turningPoint?.title || "—"}
+                    </p>
+
                     <p class="turning-text">
                         ${act.turningPoint?.description || "—"}
+                    </p>
+
+                    <p class="turning-outcome">
+                        Sucesso: ${act.turningPoint?.successOutcome || "—"}
+                    </p>
+
+                    <p class="turning-outcome">
+                        Falha: ${act.turningPoint?.failureOutcome || "—"}
                     </p>
 
                 </div>
@@ -88,7 +106,123 @@ export function renderMission(mission) {
 
     container.innerHTML = html;
 
+    bindProgressCheckboxes(container);
+
     setStatus("Missão gerada e carregada.");
+}
+
+
+/* ======================================================
+   RENDERIZA O ACOMPANHAMENTO DE SUCESSOS/FALHAS DE UM ATO
+====================================================== */
+
+function renderProgress(resolution) {
+
+    return `
+        <div class="act-section act-progress">
+
+            <p class="act-label">Acompanhamento</p>
+
+            <div class="progress-row">
+
+                <span class="progress-label progress-success">Sucessos</span>
+
+                <div class="checkbox-group">
+                    ${renderCheckboxes(resolution.successThreshold, "check-success")}
+                </div>
+
+            </div>
+
+            <div class="progress-row">
+
+                <span class="progress-label progress-failure">Falhas</span>
+
+                <div class="checkbox-group">
+                    ${renderCheckboxes(resolution.failureThreshold, "check-failure")}
+                </div>
+
+            </div>
+
+        </div>
+    `;
+
+}
+
+function renderCheckboxes(count, className) {
+
+    let html = "";
+
+    for (let i = 0; i < count; i++) {
+        html += `<input type="checkbox" class="${className}">`;
+    }
+
+    return html;
+
+}
+
+
+/* ======================================================
+   LIGA OS CHECKBOXES DE ACOMPANHAMENTO AO PONTO DE VIRADA
+====================================================== */
+
+function bindProgressCheckboxes(container) {
+
+    container.querySelectorAll(".mission-act").forEach(actEl => {
+
+        actEl.querySelectorAll(".check-success, .check-failure").forEach(checkbox => {
+
+            checkbox.addEventListener("change", () => updateTurningPointState(actEl));
+
+        });
+
+    });
+
+}
+
+function updateTurningPointState(actEl) {
+
+    const successThreshold = Number(actEl.dataset.successThreshold);
+    const failureThreshold = Number(actEl.dataset.failureThreshold);
+
+    const successCount = actEl.querySelectorAll(".check-success:checked").length;
+    const failureCount = actEl.querySelectorAll(".check-failure:checked").length;
+
+    const ready = successCount >= successThreshold || failureCount >= failureThreshold;
+
+    actEl.querySelector(".act-turning").classList.toggle("turning-ready", ready);
+
+}
+
+
+/* ======================================================
+   RENDERIZA A LISTA DE AMEAÇAS DE UM ATO
+====================================================== */
+
+function renderThreats(threats) {
+
+    if (!threats || threats.length === 0) {
+        return "";
+    }
+
+    const items = threats.map(threat => `
+        <li>
+            <strong>${threat.name}</strong> — ${threat.description}
+            (${threat.successesToDefeat} sucessos para derrotar, dano ${threat.damage})
+        </li>
+    `).join("");
+
+    return `
+        <div class="act-section act-threats">
+
+            <p class="act-label">Ameaças</p>
+
+            <ul class="threat-list">
+                ${items}
+            </ul>
+
+        </div>
+    `;
+
 }
 
 

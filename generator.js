@@ -16,8 +16,8 @@ NÃO:
 */
 
 import { missionDatabase } from "./database.js";
-import { createEmptyMission, createEmptyAct, createEmptyObjective } from "./factories.js";
-import { getRandomItem, randomInt } from "./utils.js";
+import { createEmptyMission, createEmptyAct, createEmptyObjective, createEmptyThreat, createEmptyTurningPoint } from "./factories.js";
+import { getRandomItem, randomInt, shuffleArray } from "./utils.js";
 import { missionState } from "./state.js";
 
 
@@ -58,9 +58,11 @@ function buildActs(config, missionType) {
 
     for (let i = 0; i < totalActs; i++) {
 
-        acts.push(createActFromTemplate(i, totalActs, missionType));
+        acts.push(createActFromTemplate(i, totalActs, missionType, config));
 
     }
+
+    assignThreats(acts, missionType.threats, config.threats);
 
     return acts;
 
@@ -71,7 +73,7 @@ function buildActs(config, missionType) {
    CRIAR ATO A PARTIR DE TEMPLATE
 ====================================================== */
 
-function createActFromTemplate(index, totalActs, missionType) {
+function createActFromTemplate(index, totalActs, missionType, config) {
 
     let pool = null;
 
@@ -101,6 +103,12 @@ function createActFromTemplate(index, totalActs, missionType) {
 
     act.primaryObjective = createObjectiveFromTemplate(template.primaryObjective);
 
+    act.turningPoint = createTurningPointFromTemplate(getRandomItem(missionType.turningPoints));
+
+    act.resolution.successThreshold = config.successes;
+
+    act.resolution.failureThreshold = config.failures;
+
     return act;
 
 }
@@ -117,6 +125,69 @@ function createObjectiveFromTemplate(text) {
     obj.description = text;
 
     return obj;
+
+}
+
+
+/* ======================================================
+   PONTO DE VIRADA (ADAPTADOR SIMPLES)
+====================================================== */
+
+function createTurningPointFromTemplate(template) {
+
+    const turningPoint = createEmptyTurningPoint();
+
+    turningPoint.title = template.title;
+
+    turningPoint.description = template.description;
+
+    turningPoint.successOutcome = template.successOutcome;
+
+    turningPoint.failureOutcome = template.failureOutcome;
+
+    return turningPoint;
+
+}
+
+
+/* ======================================================
+   AMEAÇAS (DISTRIBUÍDAS ENTRE OS ATOS)
+====================================================== */
+
+function assignThreats(acts, threatPool, totalThreats) {
+
+    const chosen = shuffleArray(threatPool).slice(0, totalThreats);
+
+    chosen.forEach((template, index) => {
+
+        const act = acts[index % acts.length];
+
+        act.threats.push(createThreatFromTemplate(template));
+
+    });
+
+}
+
+
+/* ======================================================
+   AMEAÇA (ADAPTADOR SIMPLES)
+====================================================== */
+
+function createThreatFromTemplate(template) {
+
+    const threat = createEmptyThreat();
+
+    threat.id = template.id;
+
+    threat.name = template.name;
+
+    threat.description = template.description;
+
+    threat.successesToDefeat = template.successesToDefeat;
+
+    threat.damage = template.damage;
+
+    return threat;
 
 }
 
