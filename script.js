@@ -8,12 +8,16 @@ Inicializar a aplicação.
 ==========================================================
 */
 
-const missionState = {
+const appState = {
 
-    acts: 3,
-    threats: 2,
-    successes: 5,
-    failures: 3,
+    generator: {
+
+        acts: 3,
+        threats: 2,
+        successes: 5,
+        failures: 3
+
+    },
 
     currentMission: null
 
